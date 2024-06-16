@@ -1,24 +1,9 @@
-import { AntDesign, Feather } from "@expo/vector-icons";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import TabBarButton from "./TabBarButton";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
   const primaryColor = "#0891b2";
   const greyColor = "#737373";
-
-  const icons = {
-    index: (props: any) => (
-      <AntDesign name="home" size={26} color={greyColor} {...props} />
-    ),
-    explore: (props: any) => (
-      <Feather name="compass" size={26} color={greyColor} {...props} />
-    ),
-    create: (props: any) => (
-      <AntDesign name="pluscircleo" size={26} color={greyColor} {...props} />
-    ),
-    profile: (props: any) => (
-      <AntDesign name="user" size={26} color={greyColor} {...props} />
-    ),
-  };
 
   return (
     <View style={styles.tabbar}>
@@ -57,29 +42,15 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
         };
 
         return (
-          <TouchableOpacity
+          <TabBarButton
             key={route.name}
-            style={styles.tabbarItem}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-          >
-            {icons[route.name]({
-              color: isFocused ? primaryColor : greyColor,
-            })}
-
-            <Text
-              style={{
-                color: isFocused ? primaryColor : greyColor,
-                fontSize: 11,
-              }}
-            >
-              {label}
-            </Text>
-          </TouchableOpacity>
+            isFoucused={isFocused}
+            routeName={route.name}
+            color={isFocused ? primaryColor : greyColor}
+            label={label}
+          />
         );
       })}
     </View>
@@ -102,12 +73,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,
     shadowOpacity: 0.1,
-  },
-  tabbarItem: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 4,
   },
 });
 
