@@ -71,7 +71,12 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
               color: isFocused ? primaryColor : greyColor,
             })}
 
-            <Text style={{ color: isFocused ? primaryColor : greyColor }}>
+            <Text
+              style={{
+                color: isFocused ? primaryColor : greyColor,
+                fontSize: 11,
+              }}
+            >
               {label}
             </Text>
           </TouchableOpacity>
@@ -102,6 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 4,
   },
 });
 
