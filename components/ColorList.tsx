@@ -1,4 +1,4 @@
-import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet } from "react-native";
 
 type IProp = {
   color: string;
